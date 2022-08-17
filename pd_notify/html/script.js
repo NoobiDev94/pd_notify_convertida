@@ -217,48 +217,74 @@ window.addEventListener("message", function (event) {
     }
 
     let image = ``;
+    let titledefault;
 
     if (data.notifytype == "check") {
+      titledefault = "SUCESSO";
       image = "check.png";
     } else if (data.notifytype == "info") {
+      titledefault = "INFO";
       image = "info.png";
     } else if (data.notifytype == "ann") {
+      titledefault = "AVISO";
       image = "megaphone.png";
     } else if (data.notifytype == "msg") {
+      titledefault = "COMUNICAÇÃO";
       image = "speech-bubble.png";
     } else if (data.notifytype == "save") {
+      titledefault = "SALVADO";
       image = "save.png";
     } else if (data.notifytype == "twt") {
+      titledefault = "TWITTER";
       image = "twitter.png";
     } else if (data.notifytype == "call") {
+      titledefault = "TELEFONE";
       image = "phone.png";
     } else if (data.notifytype == "venicebank") {
+      titledefault = "FINANCEIRO";
       image = "bank.png";
     } else if (data.notifytype == "bill") {
+      titledefault = "BILL";
       image = "bill.png"
     } else if (data.notfytype == "lspd") {
+      titledefault = "POLICIA";
       image = "police.png";
     } else if (data.notifytype == "error") {
+      titledefault = "ERRO";
       image = "warning.png";
     } else if (data.notifytype == "ems") {
+      titledefault = "HOSPITAL";
       image = "hospital.png";
     } else if (data.notifytype == "btc") {
+      titledefault = "CRYPTO";
       image = "btc.png";
     } else if (data.notifytype == "taxi") {
+      titledefault = "TAXI";
       image = "taxi.png";
     } else if (data.notifytype == "mec") {
+      titledefault = "MECANICO";
       image = "mec.png";
     } else if (data.notifytype == "belton") {
+      titledefault = "COM CINTO";
       image = "belton.png";
     } else if (data.notifytype == "beltoff") {
+      titledefault = "SEM CINTO";
       image = "beltoff.png";
     } else if (data.notifytype == "lock") {
+      titledefault = "TRANCADO";
       image = "lock.png";
     } else if (data.notifytype == "unlock") {
+      titledefault = "DESTRANCADO";
       image = "unlock.png";
     }
 
-    let title = data.title; // GetTitleByType(data.notifytype)
+    let title; // GetTitleByType(data.notifytype)
+    if(data.title == null  || data.title == undefined){
+      title = titledefault;
+    }
+    else {
+      title = data.title;
+    }
     let notification;
     if (displayTitles) {
       notification = `
